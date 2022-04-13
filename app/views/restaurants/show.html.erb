@@ -3,7 +3,18 @@
 
 <p><%= @restaurant.address  %></p>
 
-<%= link_to '+ Add Review', new_restaurant_review_path(@restaurant) %>
+<%= link_to 'Back', restaurants_path, class: "btn btn-primary btn-sm" %>
+
+<%# <%= link_to '+ Add Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary btn-sm" %>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
+
+
+<h3>Reviews</h3>
 
 <ul class="list-group">
   <% @restaurant.reviews.each do |review| %>
